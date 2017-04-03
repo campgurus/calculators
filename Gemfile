@@ -11,6 +11,8 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 # Use bootstrap 4
 gem 'bootstrap', '~> 4.0.0.alpha6'
+#us SimpleForms
+gem 'simple_form'
 # For using tooltips
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
