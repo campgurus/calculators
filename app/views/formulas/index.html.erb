@@ -1,2 +1,18 @@
 <h1>Formulas#index</h1>
 <p>Find me in app/views/formulas/index.html.erb</p>
+
+
+<div class="form-group row">
+  <label for="example-number-input" class="col-2 col-form-label">Number</label>
+  <div class="col-10">
+    <input class="form-control" type="number" value="42" id="number-input">
+  </div>  
+</div>
+<div class="form-group row">
+	<p id="result"></p>
+</div>
+
+<script type="text/javascript">
+	var x = document.getElementById("number-input").value;
+	document.getElementById("result").innerHTML = x * 2 + " is the answer"
+</script>
