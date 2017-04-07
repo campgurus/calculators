@@ -1,4 +1,6 @@
 class FormulasController < ApplicationController
+  include FormulasHelper
+  
   def index
   	@shift_hours = []
     

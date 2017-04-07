@@ -4,14 +4,12 @@
 	<label class="col-sm-2 col-form-label">Last completed hour</label>
 	<select class="form-control form-control-lg col-sm-3" >
 	  <% @shift_hours.each do |n| %>
-	    <option <%= id="hour_#{n}" %> >
+	    <option <%= id="hour_option_#{n}" %> >
 	      <%= "#{n} - #{n+1}" %>
 	    </option>
 	  <% end %>
 	</select>
 </div>
-
-
 
 <div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
 	<label for="example-number-input" class="col-2 col-form-label">Big Push Volume Goal:</label>
@@ -20,13 +18,36 @@
 	</div>  
 </div>
 
-
-
 <div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
 	<label for="example-number-input" class="col-2 col-form-label">Total Volume at last hour:</label>
 	<div class="col-2 form">
 		<input class="form-control" type="number" id="number-input" onchange="Calculate()">
 	</div>  
+</div>
+
+<div class="row">
+<table  class="table" id="big_push_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th class="col-med-3">Hour</th>
+			<th class="col-med-3">% Time on Task</th>
+			<th class="col-med-3">Volume</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @shift_hours.each.with_index do |n,i| %>
+			<tr>
+				<td><%= i+1 %>.</td>
+				<td  class="col-med-3" <%= id="hour_#{n}" %> > <%= "#{n} - #{n+1}" %>  </td>
+				<td  class="col-med-3" <%= id="task_hour_#{n}" %> >
+			    	<%= time_on_task(i) %>%</td>
+			    <td  class="col-med-3" <%= id="volume_hour_#{n}" %> >
+			    </td>
+		    </tr>
+		<% end %>
+	</tbody>
+</table>
 </div>
 
 
@@ -46,6 +67,6 @@
       return a * b;
 	}
 	var x = document.getElementById("number-input").value;
-	document.getElementById("result").innerHTML = Multiply(x,2) + " is twice your number!";
+	document.getElementById("volume_hour_#{n}").innerHTML = Multiply(x,2) + " is twice your number!";
   }
 </script>
