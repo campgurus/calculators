@@ -1,35 +1,34 @@
 <h1> Night Shift Operations Calculators</h1>
 <br>
-
 <div class="form-group row col-sm-10">
 	<label class="col-sm-2 col-form-label">Last completed hour</label>
 	<select class="form-control form-control-lg col-sm-3" >
-	  <% (1..11).each do |n| %>
+	  <% @shift_hours.each do |n| %>
 	    <option <%= id="hour_#{n}" %> >
-	      <%= "#{night_shift_hours[n-1]}" %>
+	      <%= "#{n} - #{n+1}" %>
 	    </option>
 	  <% end %>
 	</select>
 </div>
 
 
-<form>
-	<div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
-		<label for="example-number-input" class="col-2 col-form-label">Big Push Volume Goal:</label>
-		<div class="col-2 form">
-			<input class="form-control" type="number" id="big_push" onchange="Calculate()">
-		</div>  
-	</div>
-</form>
 
-<form>
-	<div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
-		<label for="example-number-input" class="col-2 col-form-label">Total Volume at last hour:</label>
-		<div class="col-2 form">
-			<input class="form-control" type="number" id="number-input" onchange="Calculate()">
-		</div>  
-	</div>
-</form>
+<div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
+	<label for="example-number-input" class="col-2 col-form-label">Big Push Volume Goal:</label>
+	<div class="col-2 form">
+		<input class="form-control" type="number" id="big_push" onchange="Calculate()">
+	</div>  
+</div>
+
+
+
+<div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
+	<label for="example-number-input" class="col-2 col-form-label">Total Volume at last hour:</label>
+	<div class="col-2 form">
+		<input class="form-control" type="number" id="number-input" onchange="Calculate()">
+	</div>  
+</div>
+
 
 <div class="row">
 	<p id="result"></p>
@@ -47,6 +46,6 @@
       return a * b;
 	}
 	var x = document.getElementById("number-input").value;
-	document.getElementById("result").innerHTML = Multiply(x,2) + " is twice your number!"
+	document.getElementById("result").innerHTML = Multiply(x,2) + " is twice your number!";
   }
 </script>
