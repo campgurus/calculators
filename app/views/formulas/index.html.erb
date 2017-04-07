@@ -1,17 +1,31 @@
-<h1>Operations Calculators</h1>
+<h1> Night Shift Operations Calculators</h1>
 <br>
 
 <div class="form-group row col-sm-10">
-	<label class="col-sm-2 col-form-label">What Shift?</label>
-	<select class="form-control form-control-lg col-sm-3">
-	  <option value="nights">Night Shift</option>
-	  <option value="days">Day Shift</option>
+	<label class="col-sm-2 col-form-label">Last completed hour</label>
+	<select class="form-control form-control-lg col-sm-3" >
+	  <% (1..11).each do |n| %>
+	    <option <%= id="hour_#{n}" %> >
+	      <%= "#{night_shift_hours[n-1]}" %>
+	    </option>
+	  <% end %>
 	</select>
 </div>
+
+
 <form>
-	<div class="form-group rowcol-sm-10">
-		<label for="example-number-input" class="col-2 col-form-label">Number</label>
-		<div class="col-10">
+	<div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
+		<label for="example-number-input" class="col-2 col-form-label">Big Push Volume Goal:</label>
+		<div class="col-2 form">
+			<input class="form-control" type="number" id="big_push" onchange="Calculate()">
+		</div>  
+	</div>
+</form>
+
+<form>
+	<div class="form-group form-inline rowcol-sm-10 onSubmit="return false">
+		<label for="example-number-input" class="col-2 col-form-label">Total Volume at last hour:</label>
+		<div class="col-2 form">
 			<input class="form-control" type="number" id="number-input" onchange="Calculate()">
 		</div>  
 	</div>
